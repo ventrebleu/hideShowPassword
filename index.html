@@ -28,6 +28,7 @@
     cursor: pointer;
     height: 100%;
     overflow: hidden;
+    padding: 0;
     text-indent: -9999em;
     width: 44px;
   }
@@ -45,14 +46,19 @@
     text-transform: uppercase;
   }
 
-  /*
-   * Because our input elements have a z-index so that
-   * their borders will overlap on focus, we'll give ours
-   * a higher one to make sure they're always visible.
-   */
   .hideShowPassword-toggle,
   .my-toggle-class {
+    /*
+     * Because our input elements have a z-index so that
+     * their borders will overlap on focus, we'll give ours
+     * a higher one to make sure they're always visible.
+     */
     z-index: 3;
+    /* Resetting default button element styles */
+    background-color: transparent;
+    border: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
   }
 
   /* Some boilerplate styles */
@@ -128,6 +134,7 @@
     vertical-align: middle;
     width: 100%;
 
+    -moz-appearance: none;
     -webkit-appearance: none;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -214,7 +221,8 @@ document.write('<script src=vendor/' +
 </script>
 
 <!-- Include the plugin. Yay! -->
-<script src="hideShowPassword.min.js"></script>
+<!-- <script src="hideShowPassword.min.js"></script> -->
+<script src="hideShowPassword.js"></script>
 
 <script>
 

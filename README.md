@@ -11,6 +11,7 @@ If [Bower](http://bower.io/)'s your thing, you can install this plugin by runnin
 
 ## History
 
+* **1.1.0**: Keyboard accessibility options
 * **1.0.2**: Uses deep merge for options
 * **1.0.1**: Added AMD support
 * **1.0.0**: _Voila!_
@@ -130,8 +131,20 @@ Here are all the options and their defaults:
     // element here. Useful for custom styles.
     wrapperClass: 'hideShowPassword-wrapper',
 
+    // Tag to use for the wrapper element.
+    wrapperTagName: 'div',
+
     // Class name for the inner toggle.
     toggleClass: 'hideShowPassword-toggle',
+
+    // Tag to use for the toggle element. Defaults to button for
+    // easy-peasy keyboard accessibility.
+    toggleTagName: 'button',
+
+    // Tab index for the toggle, also for keyboard accessibility.
+    // Defaults to 0, which means it will respect the element's
+    // position in the document.
+    toggleTabIndex: 0,
 
     // The states object includes settings specific to the "shown"
     // or "hidden" states of the input field.
@@ -214,6 +227,22 @@ The other is to defer instantiation of the plugin until you know its container w
 ```javascript
 $('a[data-toggle="tab"]').on('shown', function (e) {
   $(e.target).find('[type="password"]').hideShowPassword({ innerToggle: true });
+});
+```
+
+### Weird-looking toggles after updating to 1.1.x
+
+Version 1.1.0 introduced some small changes to the plugin to improve keyboard accessibility for the inner toggle. By default, the inner toggle element is now a `<button>` instead of a `<div>`.
+
+We recommend updating your CSS to take advantage of the accessibility improvements of this approach. Refer to the demo for examples.
+
+Alternatively, you can revert to the old behavior by customizing the `toggleTagName` and `toggleTabIndex` options:
+
+```javascript
+$('#password').hideShowPassword({
+  innerToggle: true,    // Create an inner toggle
+  toggleTagName: 'div', // Use a div instead of a button
+  toggleTabIndex: -1    // Removes toggle from the tab order
 });
 ```
 

@@ -43,8 +43,20 @@
         // element here. Useful for custom styles.
         wrapperClass: 'hideShowPassword-wrapper',
 
+        // Tag to use for the wrapper element.
+        wrapperTagName: 'div',
+
         // Class name for the inner toggle.
         toggleClass: 'hideShowPassword-toggle',
+
+        // Tag to use for the toggle element. Defaults to button for
+        // easy-peasy keyboard accessibility.
+        toggleTagName: 'button',
+
+        // Tab index for the toggle, also for keyboard accessibility.
+        // Defaults to 0, which means it will respect the element's
+        // position in the document.
+        toggleTabIndex: 0,
 
         // The states object includes settings specific to the "shown"
         // or "hidden" states of the input field.
@@ -194,13 +206,13 @@
         , wrapper
         , toggle;
 
-      el.wrap($('<div />').addClass(options.wrapperClass).css(wrapperCSS));
+      el.wrap($('<' + options.wrapperTagName + ' />').addClass(options.wrapperClass).css(wrapperCSS));
       wrapper = el.parent();
       if (wrapper[options.widthMethod]() !== elWidth) {
         wrapper.css('width', elWidth);
       }
 
-      toggle = $('<div />').addClass(options.toggleClass);
+      toggle = $('<' + options.toggleTagName + ' />').attr('tabindex', options.toggleTabIndex).addClass(options.toggleClass);
       this.updateInnerToggle(toggle, this.currentStateKey(), options.states);
       toggleCSS[attachment] = 0;
       toggle.css(toggleCSS);
