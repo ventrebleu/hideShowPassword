@@ -157,7 +157,7 @@
         changeEvent: 'passwordShown',
         props: { type: 'text' },
         toggle: {
-          className: 'hideShowPassword-toggle-hide',
+          className: 'hideShowPassword-toggle-hide icon_eye_blocked',
           content: 'Hide',
           attr: { 'aria-pressed': 'true' }
         }
@@ -167,7 +167,7 @@
         changeEvent: 'passwordHidden',
         props: { type: 'password' },
         toggle: {
-          className: 'hideShowPassword-toggle-show',
+          className: 'hideShowPassword-toggle-show icon_eye',
           content: 'Show',
           attr: { 'aria-pressed': 'false' }
         }
